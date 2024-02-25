@@ -1,0 +1,34 @@
+<!-- Adding react in html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- 
+        This is the Core React Library/File.
+        Write "React" in Console to View its Features -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> 
+
+    <!-- 
+        This the react libray which is used for dom operation 
+        Write "ReactDOM" in Console to View its Feature
+    -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Writing Hello World Using React basic -->
+    <script>
+        const heading = React.createElement("h1", {}, "Hello World from React!"); // {} => In this object we will give attributes to the tags. we can give id or calls using this object
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(heading);   // "render" adds "heading" into the "root" div.
+    </script>
+</body>
+</html>

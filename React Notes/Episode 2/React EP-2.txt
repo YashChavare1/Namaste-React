@@ -1,0 +1,184 @@
+Q1. What is npm
+- npm serves as both a package manager and a repository for JavaScript packages. 
+- It manages package installation, updates, and removals within projects, while also hosting a vast collection of packages in its registry. 
+- npm is widely used for software development, providing access to a diverse range of libraries, frameworks and tools. 
+- Developers can easily install Node.js and global npm packages, ensuring a seamless development experience. In projects, npm manages all dependencies, utilizing a package.json file to define and track package versions.
+- npm does not have any full form
+- npm init // command to use npm is your project
+- when "test command" is asked while setting up npm, enter "jest" as test command
+
+Q2. What is Parcel and Webpack? Why do we need it?
+
+- Parcel:
+    1. Parcel is a "zero-configuration" module bundler.
+    2. It automatically analyzes a project's dependencies and builds a dependency graph, allowing it to bundle modules efficiently.
+    3. Parcel supports a wide range of file types out of the box, including JavaScript, CSS, HTML, and more, making it easy to work with various types of assets.
+    4. It offers built-in features like hot module replacement (HMR), which enables developers to see changes in real-time without manually refreshing the browser.
+    5. Parcel is known for its simplicity and ease of use, making it a popular choice for beginners and small to medium-sized projects.
+
+    Need of Parcel: 
+        We need Parcel because it's easy to use, requires minimal setup, and automatically handles many tasks like dependency resolution and bundling. It supports various file types out of the box and comes with built-in features like hot module replacement for a smooth development experience. It's perfect for beginners and small to medium-sized projects.
+
+    Features of Parcel
+        - Dev build
+        - Local server
+        - HMR - Hot Module Replacement
+        - File Watching Algorithm - written in C++
+        - Caching - faster builds
+        - Image Optimization
+        - Minification -  the process of removing all unnecessary characters from JavaScript source code without altering its functionality.
+        - Bundling
+        - Compressing
+        - code splitting
+        - Consistent hashing
+        - differential Bundling. - suppor older browsers
+        - Diagnostic
+        - Error Handling
+        - Tree Shaking - remove unused code. 
+
+- Webpack:
+    1. Webpack is a highly configurable module bundler that offers extensive customization options to suit complex project requirements.
+    2. It allows developers to define custom loaders and plugins to process different types of files and perform tasks like transpilation, optimization, and asset management.
+    3. Webpack uses a configuration file (webpack.config.js) to define its behavior, giving developers fine-grained control over the bundling process.
+    4. It excels at optimizing bundles for production, offering features like code splitting, tree shaking, and minification to reduce bundle size and improve performance.
+    5. Webpack has a large ecosystem of loaders and plugins developed by the community, enabling developers to extend its functionality and integrate with other tools seamlessly.
+
+    Need of webpack: 
+       Webpack is essential for modern web development because it bundles JavaScript modules and other assets, manages dependencies, supports code splitting, provides loaders and plugins for preprocessing and optimization, optimizes bundles for production, supports hot module replacement for fast development, and integrates with build tools seamlessly.
+
+    Features: 
+        - Module Bundling
+        - Dependency Management
+        - Code Splitting
+        - Loaders
+        - Plugins
+        - Optimization
+        - Hot Module Replacement (HMR)
+        - Integration with Build Tools
+
+Q3. What is 'parcel-cache'?
+    The `.parcel-cache` folder is utilized by Parcel to store processed data, such as compiled code. This helps speed up project builds in the future. It acts like a memory bank, retaining executed code so that Parcel doesn't have to redo the same work repeatedly.
+
+Q4. What is npx?
+    `npx` is a tool that comes with npm and lets you run Node.js packages without installing them globally or locally first. It's handy for running commands or scripts from packages without cluttering your system or project with unnecessary installations.
+
+Q5. What is difference between `dependencies` vs `devDependencies`
+
+    1. dependencies:
+    - Dependencies listed under the `dependencies` key are required for the application to run in production. These are the packages that are necessary for the application to function properly when it's deployed and used by end-users.
+    - Examples of dependencies include libraries, frameworks, and tools that the application relies on to operate correctly.
+
+    2. devDependencies:
+    - Dependencies listed under the `devDependencies` key are only needed during development and testing. These packages are not required for the application to run in production but are essential for the development and testing processes.
+    - Examples of devDependencies include testing frameworks, build tools, and development utilities that developers use to build, test, and maintain the application.
+
+    In summary, `dependencies` are necessary for the application to function in production, while `devDependencies` are only needed during development and testing. Separating dependencies in this way helps keep production builds lean and ensures that only essential packages are included.
+
+Q6. What is tree Shaking? 
+    Tree shaking is a process used in modern JavaScript bundlers, like Webpack and Parcel, to eliminate dead code or unused modules from the final bundle. 
+
+    Here's how it works:
+    1. Static Analysis: The bundler performs static analysis on the codebase to determine which modules are imported and used.
+    2. Dead Code Detection: Modules that are imported but not used anywhere in the codebase are identified as dead code.
+    3. Removal of Dead Code: The bundler removes these dead code modules from the final bundle, resulting in a smaller bundle size.
+
+    Tree shaking helps optimize the performance of web applications by reducing the size of the JavaScript bundle sent to the browser. This, in turn, leads to faster load times and improved user experience.
+
+Q7. What is Hot Module Replacement?
+    Hot Module Replacement (HMR) is a feature commonly found in modern JavaScript module bundlers like Webpack and Parcel. It allows developers to apply code changes in real-time without the need for a full page reload, preserving the application state and speeding up the development process.
+
+    Here's how HMR works:
+    1. Detecting Changes: The module bundler monitors the files in the project for any changes, such as modifications to code or assets.
+    2. Applying Changes: When a change is detected, the module bundler updates the affected modules in the browser without refreshing the entire page. Only the modules that have changed are swapped out, while the rest of the application remains intact.
+    3. Preserving State: HMR preserves the application state during the update process, so any changes made to the code do not result in a loss of data or a disruption of the user experience.
+    4. Fast Feedback Loop: With HMR, developers can see the effects of their code changes immediately in the browser, speeding up the development process and enabling rapid iteration.
+
+    HMR is particularly useful during development, as it allows developers to make changes to the code and see the results instantly without the need to manually refresh the page or lose the current application state. It enhances the developer experience by providing a fast feedback loop and improving productivity.
+
+Q8. List down your favourite 5 superpowers of Parcel and describe any 3 of them.
+    1. Dev Build: Parcel's development build is optimized for speed and convenience, providing fast iteration times during development.
+    2. HMR (Hot Module Replacement): HMR allows instant updates to your code in the browser without needing to refresh the page, making development faster and more interactive.
+    3. Caching - Faster Builds: Parcel caches build results, speeding up subsequent builds by only rebuilding what has changed, reducing waiting times during development.
+    4. Bundling: Parcel efficiently bundles your project's assets, ensuring optimal performance and compatibility across different environments.
+    5. Tree Shaking: Parcel's tree shaking feature removes unused code from your project, resulting in smaller bundle sizes and faster load times for your application.
+
+Q9. - What is `.gitignore`? What should we add and not add into it?
+    - `.gitignore` is a list of files and folders that Git should ignore.
+    - We add things to `.gitignore` that we don't want Git to track, like temporary files or ones that can be regenerated.
+    - We shouldn't add important files or folders to `.gitignore`, like code files or essential project settings.
+    - Essentially, `.gitignore` helps keep our repository clean by excluding unnecessary files and folders from being tracked by Git.
+
+Q10.  What is the difference between `package.json` and `package-lock.json`
+
+    What is package.json?
+        - package.json is a configuration file in Node.js projects that manages dependencies, project metadata, and custom scripts for tasks automation.
+        - it keep track of what version of package is installed.
+
+
+    What is package-lock.json?
+        - package-lock.json is a file created by npm to remember the exact versions of all the libraries your project uses. This ensures that when someone else works on your project or you move it to a different computer, the same versions of libraries are installed, preventing unexpected issues.   
+
+Q11. Why should we not modify "package-lock.json"
+    we shouldn't modify `package-lock.json` because it's automatically created to lock down the specific versions of your project's dependencies. Changing it manually can cause problems with dependency versions and lead to errors in your project.
+
+Q12. What is `node_modules` ? Is it a good idea to push that on git?
+    - node_modules is a directory where npm (Node Package Manager) installs project dependencies. It contains all the packages and libraries needed for the project to run.
+    - "node_modules" contains many files, making it large in size. The versions of these files are managed and specified in package.json and package-lock.json, which can be regenerated easily. Therefore, there's no need to push this heavy folder to Git, as it can slow down operations and isn't necessary for reproducing the project.
+
+Q13. What is 'dist' folder?
+    The `dist` folder in Parcel contains the final, optimized version of your project ready for deployment. It's where Parcel bundles and outputs all your project files, including HTML, CSS, and JavaScript, after optimizing them for production use.
+
+Q14. What is Browserlist?
+    BrowswerList: `browserList` is a configuration option in web development tools that lets you specify which browsers your code should support. It helps ensure your code works across different browsers by automatically applying necessary transformations or polyfills.
+
+    we have to add the browserList in the package.json file
+
+    "browserlist": [
+        "last 2 versions"
+    ]
+
+Q15. What is caret and tilda
+    Difference between tilde(~) and caret(^) in package.json
+    - If you have put caret(^) in package.json it will automatically update the new minor version is available.
+    - If you have put tilde(~) it will install the major updates which are been available
+    - Always it is safe to use caret and install minor updates.
+
+
+
+- Parcel
+    - npm install -D parcel     // -D to install parcel as dev dependencies
+    - There are two types of dev dependencies 
+        1) dev dependencies     // used for developement
+        2) Normal dependencies  // can be used for deployment
+
+    - npm i react   // using react in parcel project
+    - npm i react-dom   // using react-dom in parcel project
+
+    - run: npx parcel index.html
+    - create a build: npx parcel build index.html
+
+Q16. What is integrity in package-lock.json
+    The package-lock.json file includes a property called "integrity," which essentially serves as a hash representing the specific version of each package installed in your project. This integrity hash helps maintain consistency during deployment and across different environments, ensuring that the correct versions of packages are used.
+
+
+Q17. What is Transitive dependency: 
+    Transitive dependency: If your project depends on package A, and package A depends on package B, then package B is a transitive dependency of your project.
+
+----------x----------x-----------
+
+- for installing a package we have to write npm
+- for executing the package we have to write npx
+- CDN links are not good way to bring react and reactDom into the project. because fetching from cdn is a costly operation. if react update to a newer version we have to update the cdn url
+- because cdn links can be difficult to handle, we can install react package in our package.json, because it is easy to maintain from there.
+    - npm install react	// command to install react
+    - npm install react-dom 	// command to install react-dom
+- after installing the react and react-dom package we do not need the cdn link in index.js
+when we create a build of our react application using "npx parcel build index.js" then it will apply all optimization thing to our project.
+
+----------x----------x-----------
+
+- Bundler
+    - The most important package in our project is bundler
+    - bundler, packages our application properly so that it can be shipped for production properly.
+    - vite, webpack, parcel is bundler.
+    - "create-react-app" uses webpack in behind to setup environment for react application.

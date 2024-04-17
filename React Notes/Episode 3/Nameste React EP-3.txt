@@ -1,0 +1,187 @@
+npx parcel index.html
+npx parcel build index.html
+
+above both are takes time so, we will write our "start" and "build" sript in the "script" object of "package.json"
+
+"scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+  },
+
+npx run start // to start react project
+npx run build // to make a build of our project
+
+---------------x---------------x---------------
+
+# H1 in javascript
+const heading = React.createElement(
+    "h1",
+    {id: "heading"},
+    "Nameste React🚀"
+);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+# H1 in jsx
+// JSX => Babel transpiles it to React.createElement => ReactElement - JS Object => HTMLElement(render)
+const jsxHeading = <h1 id="heading">Nameste React🚀<h1>;
+const root = ReactDOM.createRoot(document.getElementById("root"));;
+root.render(heading);
+
+---------------x---------------x---------------
+
+If we have to write the jsx in multiple line we have to use "()" brackets
+
+const jsxHeading = (<h1 id="heading">
+  Nameste React🚀
+<h1>);  // valid ✅
+
+const jsxHeading = (<h1 id="heading">Nameste React🚀<h1>); // valid ✅
+
+const jsxHeading = <h1 id="heading">
+  Nameste React🚀
+<h1>;  // Invalid ❌
+
+---------------x---------------x---------------
+
+## React Functional Component ##
+The function which returns jsx code is called as functional component in react
+
+Method 1: 
+const HeadingComponent = () => {
+  return <h1 className="heading">Nameste React Functional Component🚀<h1>
+}
+
+Method 2:
+const HeadingComponent = () => <h1 className="heading">Nameste React Functional Component🚀<h1>
+
+Method 3: 
+const HeadingComponent = () => (
+    <div id="container">
+      <h1 className="heading">Nameste React Functional Component🚀<h1>
+    </div>
+);
+
+---------------x---------------x---------------
+
+## React element ##
+
+const heading = (
+  <h1 className="heading">
+    Nameste React Element🚀
+  <h1>
+);
+
+---------------x---------------x---------------
+
+## Rendering
+
+  - Rendering Element
+    root.render(heading);
+
+  - Rendering Component
+    root.render(<HeadingComponent />)
+
+---------------x---------------x---------------
+
+## Rendering Component inside a Component | Component Compositions ⭐
+
+  const TitleComponent = () => (
+    <div id="container">
+      <h1 className="heading">Nameste React Using JSX🚀<h1>
+    </div>
+  );
+
+  const HeadingComponent = () => (
+    <div id="container">
+      <TitleComponent />  // Rendering the "TitleComponent" inside the HeadingComponent
+      <h1 className="heading">Nameste React Functional Component🚀<h1>
+    </div>
+  );
+
+---------------x---------------x---------------
+
+  const title = getData();
+  const DisplayData = () => (
+    <div id="container">
+        {title} // Here, title can have malicious data. But jsx does not blindly executes the code. It will firstly sanitize the code and then execute it
+    </div>
+  );
+
+---------------x---------------x---------------
+
+## Calling a component like a function inside jsx
+  - atlast the compoent is an js function and we can call it
+
+  const HeadingComponent = () => (
+    <div id="container">
+      <TitleComponent /> 
+      <h1 className="heading">Nameste React Functional Component🚀<h1>
+    </div>
+  );
+
+  const DisplayData = () => (
+    <div id="container">
+        {HeadingComponent()}  // Calling HeadingComponent like a function
+    </div>
+  );
+
+---------------x---------------x---------------
+
+## Method to call Component/Functional Component in jsx
+
+    { FunctionalComponent() }
+    <FunctionalComponent />
+    <FunctionalComponent></FunctionalComponent>
+
+    All above are valid syntax for calling FunctionalComponent
+
+---------------x---------------x---------------
+
+What is JSX?
+    - JSX is a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. It's primarily associated with React but can technically be used independently.
+    - JSX is commonly used with React to describe UI components because JSX makes it easier to write React code.
+    - JSX helps make react code looks like regular html code, which makes it easier to work with. 
+    - So while React and JSX are different, JSX is often used with react to make coding easier.
+    - Javascript engine does not understand JSX ⭐
+
+---------------x---------------x---------------
+
+Difference between React.createElement and JSX
+    - React.createElement: It is the pure JavaScript way of creating React elements. Atlast React.createElement is an JS Object
+    - JSX: It allows you to write HTML-like syntax directly in your JavaScript code. JSX gets transformed into React.createElement code during the build process
+
+---------------x---------------x---------------
+
+Benefits of JSX:
+    - Readability: JSX allows developers to write UI components in a format that looks like HTML. make it easier to work with and understand
+    - Ease of Use: JSX streamlines the process of building UIs by providing a familiar syntax for web developers.
+    - Conciseness and Clarity: JSX simplifies React development by reducing the amount of code needed to define UI components compared to traditional JavaScript syntax.
+
+---------------x---------------x---------------
+
+Behind the scenes of JSX:
+    - JavaScript engine cannot understand the JSX Code.
+    - The JSX code is "transpiled" to React.createElement.
+    - The transpilation process is done by babel which is managed by parcel.
+    - The React.createElement code is an JS object representing React Element.
+    - The JS Object is rendered into HTML DOM as HTMLElements.
+
+---------------x---------------x---------------
+
+Babel and Parcel role in JSX.
+Babel: It converts JSX code into React.createElement which is JS Object that browsers can understand this process is called transpilation. Without Babel, browsers wouldn't recognize JSX syntax.
+
+Parcel: It's a bundler that manages various tasks in web development, including JSX transpilation by integrating with Babel. Parcel simplifies the development workflow by automating tasks like code transformation and dependency management.
+
+Babel for Transpilation?
+    Babel, a JavaScript compiler, handles the transpilation process, converting JSX syntax into compatible JavaScript code. Tools like Parcel help manage this process, handling the bundling and compilation of code.
+
+---------------x---------------x---------------
+
+Role of "type" attributes in script tag?
+    The type attribute in the <script> tag specifies the type of content within the script block. It helps browsers understand how to handle the script code. 
+
+    <script type="module" src="./App.js"></script>
+
+    above type="module" indicate that the script is an ECMAScript module.

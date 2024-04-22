@@ -1,0 +1,179 @@
+# All About props
+    - The props we pass to an function/component is passed as an object
+
+    // Passed the props and directly using it.
+    const RestaurantCard = (props) => {
+        return (
+            <div className="res-card">
+                <h3>{props.resName}</h3>
+                <h4>{props.cuisine}</h4>
+            </div>
+        );
+    };
+
+    // Destructuring props and then using it.
+    const RestaurantCard = ({resName, cuisine}) => {
+        return (
+            <div className="res-card">
+                <h3>{resName}</h3>
+                <h4>{cuisine}</h4>
+            </div>
+        );
+    };
+
+    // Destructuring props and then using it - Good practice
+    const RestaurantCard = (props) => {
+        const {
+            resName, 
+            cuisine
+        } = props;
+        
+        return (
+            <div className="res-card">
+                <h3>{resName}</h3>
+                <h4>{cuisine}</h4>
+            </div>
+        );
+    };
+
+# Key in React
+    - When we fetched the data there are 50 element in the array at first. 
+    - And if one element is added to array, 
+    - And key is not present for the elements, our DOM tree will not know which element is new to the array and it will re-render all the elements in the array.
+    - If element has a key then it will only render the new element or update the DOM tree for specific element only.
+
+# Why not to use index as key
+    - Using the index as the key in React is not recommended because it can cause issues with element identification and performance when the order changes. Instead, use stable, unique identifiers to ensure reliable rendering and efficient updates.
+
+Q. is JSX mandatory in React?
+    JSX is not strictly mandatory for using React, but it is highly recommended and widely used in React development for several reasons. JSX, or JavaScript XML, is a syntax extension for JavaScript that looks similar to HTML. It simplifies the process of writing components in React by making the code more readable and expressive.
+
+Q. is ES6 mandatory for React?
+    ES6 (ECMAScript 2015) is not strictly mandatory for using React, but it is highly recommended and widely used in modern React development. ES6 introduced many features that enhance JavaScript’s capabilities and make it more efficient, especially in the context of building complex applications like those often made with React.
+
+    Some features, why ES6 is favored in React:
+        1. Syntax Improvement
+        2. Modules: ES6 introduced native module support (import/export), which is very useful for managing dependencies and organizing code in a React project.
+        3. Destructuring and Spread Operator: These features allow for more concise and flexible code, particularly when dealing with props, state, or other data structures.
+        4. Promises and Async/Await: These features are critical for handling asynchronous operations more efficiently, such as API calls, which are common in React applications.
+        5. Let and Const: These provide block-scoped variables and constants, which help prevent many common bugs in JavaScript programming.
+
+Q. How to write comment in JSX?
+    {/* Comment */}
+
+Q. what is <React.fragement></React.fragement> and <></>
+    In React, <React.Fragment> and the shorthand syntax <>...</> are used to group multiple elements without adding an extra node to the DOM. This is particularly useful when you need to return multiple elements from a component without wrapping them in an unnecessary outer element like a div.
+
+Q. Why Use React.Fragment?
+    When you're rendering a list of components or multiple elements side-by-side, React requires that they be wrapped in a single enclosing tag. Historically, developers often used a div or another HTML element to satisfy this requirement. However, this can lead to extra, unnecessary DOM nodes, which might complicate the CSS or affect performance negatively.
+
+    React introduced Fragment as a solution to this problem. It allows you to group a list of children without adding extra nodes to the DOM, keeping your component tree neat and efficient.
+
+    Syntax:
+        <React.fragement>
+            <div></div>
+            <div></div>
+            <div></div>
+        </React.fragemet>
+
+        <>
+            <div></div>
+            <div></div>
+            <div></div>
+        </>
+
+Q. What is Virtual DOM 
+    The Virtual DOM (Document Object Model) is a fundamental concept behind the efficiency of React and several other modern web frameworks and libraries. It is an abstraction of the HTML DOM, and it is essentially a lightweight copy of the actual DOM. The Virtual DOM enables efficient updates to the UI by minimizing direct manipulation of the DOM
+
+Q. How Virtual DOM works?
+    1. Initial Rendering:  When a React application first loads, React creates a Virtual DOM that represents the current state of the UI. This Virtual DOM is a node tree that lists the elements, their attributes, and content as objects.
+    
+    2. Update Lifecycle: When something in your React component (state or props) changes, a new Virtual DOM tree is created. This tree represents the new state of the UI.
+
+    3. Diffing Algorithm: React then performs a diffing algorithm, which compares the new Virtual DOM tree with the previous one. This comparison process is fast and efficiently determines exactly which parts of the actual DOM need to change to reflect the new state of the UI.
+
+    4. Reconciliation: Based on the differences identified by the diffing algorithm, React calculates the most efficient way to update the actual DOM. This is the reconciliation process, during which React updates only the parts of the DOM that actually changed.
+
+    5. Batch Updates: Batch updates mean that instead of updating the webpage every time something changes, React waits and collects all the changes that need to happen, and then updates the webpage all at once. This helps avoid unnecessary updates and makes the process more efficient, which improves the overall performance of the web app.
+
+Q. What is Reconciliation: 
+    Reconciliation is the process in React where it compares the Virtual DOM with the actual DOM and determines the minimum number of changes needed to update the actual DOM to match the Virtual DOM. It's a crucial step in React's rendering process, ensuring that the UI reflects the current state of the application efficiently.
+    
+    Here's how reconciliation works in React:
+    1. Virtual DOM vs. Actual DOM: React maintains a Virtual DOM, which is a lightweight representation of the actual DOM. When there are changes to the state or props of a component, React re-renders the Virtual DOM.
+    
+    2. Diffing Algorithm: React then performs a process called "diffing," where it compares the new Virtual DOM tree with the previous one. It identifies the differences or updates needed to reflect the changes in the actual DOM.
+    
+    3. Efficient Updates: Instead of re-rendering the entire UI or making wholesale changes to the DOM, React calculates the minimal set of changes required to update the actual DOM based on the differences identified in the diffing process.
+    
+    4. Update Strategy: React updates the actual DOM strategically, applying only the necessary changes. This minimizes the performance impact of UI updates, making the application more responsive and efficient.
+    
+    5. Reconciliation Process: React walks through the Virtual DOM tree and the actual DOM tree, reconciling any differences by updating, adding, or removing DOM elements as needed to reflect the changes in the application state.
+
+    Reconciliation is a key optimization technique in React, allowing developers to build complex and dynamic user interfaces without sacrificing performance. By efficiently updating only the parts of the UI that have changed, React ensures a smooth and responsive user experience.
+
+
+Q. What is Reaact Fiber?
+    React Fiber is an internal reimplementation of the React reconciliation algorithm, the core algorithm that React uses to update the user interface (UI) based on changes in state or props. Introduced in React version 16, Fiber is not visible to React developers directly but is a fundamental change under the hood that improves performance, responsiveness, and the ability to handle concurrent updates.
+
+    1. Incremental Rendering: Fiber enables React to work on rendering in smaller chunks or units called "fibers." This allows React to pause, abort, or prioritize work, making the UI more responsive by ensuring that high-priority updates are processed quickly.
+    
+    2. Priority Levels: Fiber introduces a concept of priority levels for different types of updates. This allows React to differentiate between updates that are more time-sensitive (e.g., user input) and updates that are less critical (e.g., background data fetching). Priority levels help React schedule work efficiently, ensuring that important updates are processed without delay.
+    
+    3. Time Slicing: Fiber enables time slicing, a technique that allows React to break up rendering work over multiple frames, preventing the UI from freezing or becoming unresponsive during heavy computations. Time slicing ensures that the browser remains responsive to user interactions even when React is performing intensive tasks.
+    
+    4. Error Boundaries and Interruption: With Fiber, React introduces error boundaries, which are components that catch errors that occur during rendering, in lifecycle methods, or in constructors of the whole React tree below them. This prevents the entire application from crashing due to errors in a single component. Fiber also improves the ability to handle interruption, allowing React to gracefully pause and recover from errors or user interruptions without compromising the stability of the application.
+    
+    5. Better Server-Side Rendering (SSR) Support: Fiber improves server-side rendering performance and concurrency by allowing React to pause and resume rendering, making it easier to implement SSR in large-scale applications.
+
+Q. What are the issues in reconciliation algorithm that react is going to use react fiber.
+
+    1. Poor Responsiveness: The previous reconciliation algorithm could lead to UI freezes or unresponsiveness during heavy computations or updates, as React would perform all the work in a single pass without prioritization.
+    
+    2. Limited Concurrency: The old algorithm lacked efficient support for concurrent updates, making it challenging to handle multiple updates simultaneously or prioritize updates based on their importance or time sensitivity.
+    
+    . Lack of Interruptibility: React's previous reconciliation algorithm did not support interruptibility, meaning that once rendering began, it could not be easily paused or aborted in response to user interactions or other events.
+    
+    4. Inefficient Error Handling: Errors occurring during rendering, lifecycle methods, or constructors within a component subtree could lead to entire application crashes, as React did not provide robust error boundaries to catch and handle these errors gracefully.
+    
+    5. Difficulty Supporting New Features: The old reconciliation algorithm posed challenges in implementing new features and APIs, such as Suspense for data fetching and lazy loading of components, which require a more flexible and efficient rendering architecture.
+
+Q. Why do we need keys in React?
+    In React, keys are used to uniquely identify elements in a list of components or when rendering dynamic lists of elements. Keys serve several important purposes:
+
+    1. Efficient Reconciliation: When React updates a list of elements, it needs a way to identify which items have changed, been added, or been removed. Keys provide a stable identity for elements across re-renders, allowing React to efficiently reconcile the old list with the new one by matching elements with the same key and updating only the necessary parts of the DOM.
+
+    2. Performance Optimization: Using keys can significantly improve the performance of list rendering, especially for large lists. Without keys, React may need to recreate the entire list each time it changes, leading to unnecessary re-renders and potential performance bottlenecks. Keys enable React to optimize the rendering process by selectively updating only the elements that have changed or moved.
+
+    3. Preserving Component State: Keys help React preserve the state of components within a list across re-renders. Without keys, components may lose their state or behave unexpectedly when the order of elements in the list changes. Keys ensure that React can correctly identify and re-render components based on their keys, preserving their state and preventing unintended side effects.
+
+    4. Ensuring Component Identity: Keys provide a way to ensure component identity and prevent unnecessary re-mounting of components. When a component is re-rendered with a new set of props but the same key, React recognizes it as the same component instance and updates its props instead of unmounting and remounting it. This helps maintain component state and improves performance by avoiding unnecessary re-renders.
+
+    In summary, keys play a crucial role in React's reconciliation process, enabling efficient updates to lists of elements, preserving component state, and ensuring component identity across re-renders. By providing a stable identity for elements, keys help React optimize performance and maintain a consistent user interface.
+
+Q. Why do we need keys in React?
+    Keys are needed in React whenever you are rendering a list of elements or components dynamically. 
+
+    1. Rendering Lists: When you map over an array of data to render a list of elements or components, each item in the list should have a unique key associated with it.
+
+    2. Dynamic Rendering: When you dynamically add or remove elements from a list, keys help React efficiently identify which elements have changed, been added, or been removed.
+
+    3. Rendering Dynamic Content: When rendering dynamic content, such as a list of search results, filtered items, or paginated data, keys help React efficiently update the UI without re-rendering unnecessary elements.
+
+Q. Can we use index as key in React?
+    Using index as keys in React is not recommended because it can lead to issues with component stability, performance, state management, and debugging. While it may be acceptable for static lists with no reordering or dynamic updates, it's generally best to use unique and stable identifiers for keys to ensure predictable behavior and optimal performance. If unique identifiers are not available, consider generating them using a library like `uuid`.
+
+Q. What are props in React?
+
+    In React, "props" (short for "properties") are a way to pass data from a parent component to a child component. Props are immutable and are used to configure and customize child components based on the parent's requirements or state.
+
+    Here are some key points about props in React:
+    1. Passing Data: Props allow you to pass data from a parent component to a child component. This data can be any JavaScript value, such as strings, numbers, objects, arrays, functions, or even JSX elements.
+    
+    2. Immutable: Props are read-only, meaning that child components cannot modify their props directly. Props are passed down from parent to child and are used to configure the child component's behavior or appearance.
+    
+    3. Component Configuration: Props are commonly used to configure child components based on the parent's state or other dynamic factors. For example, you can pass different text or styles to a child component based on user input or application logic.
+    
+    4. Accessing Props: Inside a functional component, props are accessed as an argument to the component function. Inside a class component, props are accessed via the this.props object.
+    
+    5.Component Composition: Props enable component composition, allowing you to create reusable and composable components that can be easily customized and combined to build complex UIs.

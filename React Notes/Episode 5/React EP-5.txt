@@ -1,0 +1,102 @@
+- React excels in DOM manipulation by utilizing the Virtual DOM and employing reconciliation algorithms like React Fiber.
+- react keep the data layer sync with the UI Layer
+- react uses React Fiber for efficiently updating the DOM.
+- React Fiber is nothing but re-implementation of a reconciliation algorithm
+
+# What is virtual DOM
+    - The Virtual DOM is a concept or technique used by libraries like React to efficiently update the actual DOM. It's represented as a lightweight, in-memory tree structure of JavaScript objects.
+    - virtual DOM is a representation of an actual DOM, allowing react to make changes in the virtual DOM before updating the actual DOM in the browser.
+    - The Object, which JS creates after converting the JSX code in React.createElement() is called React Element.
+    - React then takes these element and translate them into a format that DOM can understand, which is called the virtual DOM
+
+# Want to see Virtual DOM?
+    - Just Console.log the component you can see the virtual DOM.
+
+------------------------------------------
+
+# What is diff Algorithm.
+    - Diff Algorithm finds out the difference between the updated virtual DOM and the previous Virtual DOM
+    - The Diff Algorithm identifies changes between the new and previous virtual DOMs, enabling React to efficiently update the actual DOM.
+
+# How does diff Algorithm works?
+    - The Diff Algorithm works by comparing the new virtual DOM with the previous one, identifying the differences between them
+    - It then identifies the minimal set of changes needed to update the actual DOM efficiently. 
+    - This process involves recursively traversing the virtual DOM tree and comparing each element, attribute, and child node to find additions, updates, or removals.
+    - Once differences are identified, React applies these changes to the actual DOM through its reconciliation process, ensuring that UI updates are performed optimally.
+
+------------------------------------------
+
+# React Fiber (Introducted in React-16)
+    - React Fiber is indeed a significant update introduced in React 16, representing a re-implementation of the reconciliation algorithm.
+    - This React Fiber is the new way of efficently finding the differences(diffing) between the previous and current virtual DOM and efficently applying those changes to update the Actual DOM.
+    - React Fiber is a core Algorithm of react.
+    - React is Doing efficient DOM manipulation, becuase it has Virtual DOM.
+    - React can efficiently finds the difference between the the virtual DOM and the Actual DOM Using the diffing Algorithm and updates the UI using reconciliation algorithm, that's why react is fast.  
+
+------------------------------------------
+
+# Diff Algorithm: It finds the differences between the previous and updated virtual DOMs.
+
+# Reconciliation Algorithm/React Fiber: It efficiently updates the actual DOM based on the differences identified by the Diff Algorithm.
+
+------------------------------------------
+
+# useState();
+    - The useState(); in react returns an array with two elements first is currect value and second is a function to update the state.
+    - Whenever a useState variable updates react will re-render the component.
+
+------------------------------------------
+
+# Named export:
+    - using named export we can export multiple values from a single module. each export is given a name.
+
+    // Example of named export
+    export const functionName = () => {
+
+    }
+
+    // Example of named export
+    export const number = 43;
+
+    // Importing named export
+    import { functionName, number } from "./moduleLocation";
+
+# default export: 
+    -  Default export allows you to export a single value (function, class, object, etc.) as the default export of a module.
+    -  There can be only one default export per module.
+    - You can import default export by any name but the module location needs to be accurate.
+
+    // Example of default export
+    const functionName = () => {
+    }
+    export default functionName;
+
+    OR
+
+    // export component
+    export default FunctionName = () => {
+    }
+
+    // Importing default function
+    import functionName from "./moduleLocation";
+
+# "*" as export
+
+    // Exporting
+    export const str = "This is string",
+    export function fn() {
+    }
+
+    // Importing
+    import * as myModule from "./moduleLocation.js";
+    console.log(myModule.str);
+    myModule.fn();
+    
+------------------------------------------
+
+Q. What is the importance of config.js file
+    - Centralizes environment-specific settings like API endpoints and database URLs.
+    - Secures sensitive information such as API keys and access tokens.
+    - Enables customization and feature flags for controlling application behavior.
+    - Facilitates dependency injection and maintainability in complex applications.
+    - Enhances scalability and ease of deployment by separating configuration from code.

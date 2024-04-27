@@ -1,0 +1,111 @@
+# Routing Version-6
+
+- Whenever we have to create routes, we have to create routing configuration.
+- createBrowserRouter will create routing configuration for our project.
+- createBrowserRouter takes list of object(path).
+- After creating createBrowserRouter we have to pass it to render it on page load, we use RouterProvider which provides our routes to webpage
+- useRouteError hook is used to give detail of the error cause during the routing.
+
+# When we have to add childer component to some component
+    - we can use "childers: []" in createBrowserRouter.
+    - Then we just have to add <Outlet /> in our component
+    - When react-router-dom see the <Outlet /> in our component then it will check for the url, if url has the router which is mention in the childerns then it will load that component. else the error page.
+    - what is use of <Outlet /> in our parent page ==> when the endpoint is been hit which is in the childern array then the component linked to that endpoint will be fill the <Outlet />
+
+    const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout />,
+        childerns: [
+            {
+                path: "/",
+                element: <Body />
+            }, 
+            {
+                path: "/about",
+                element: <AboutPage />
+            },
+            {
+                path: "/contact",
+                element: <ContactPage />
+            }
+        ]
+        errorElement: <ErrorPage />
+    },
+]);
+
+---------------------------------------
+How to identify the hooks
+    - In react industry the hook starts with "use...."
+    - Example: useState, useEffect, useRef
+---------------------------------------
+In React never use anchor tag for routing
+because anchor tag reloads the page
+
+instead of anchor tag we will use "Link" which is provided by react-router-dom
+link will not reloads the whole page
+---------------------------------------
+Key Should be given to the parent JSX
+---------------------------------------
+Q. What are various ways to add images into our App? 
+
+    1. Importing Static images
+        import logo from "./logo.png"
+        <img src={logo} />
+
+    2. Using CSS background Image Property
+        .background {
+            background-image: url('path');
+        }
+
+    3. Image URL from API
+        <img src={imgApiLink} alt="Dynamic Image from API">
+
+    4. SVG as Image
+        import svg from "./path";
+        <img src={svg} />
+---------------------------------------
+Q. What would happens if we do console.log(useState());
+    - The useState() will return the array.
+    - The array contains initial value as its first element.
+    - And a setter function as its second element which is used to update the value of the state variable.
+
+    useState();
+    - never create useState outside the body of function.
+    - use on the top of the function
+    - never create useState inside the if-else, for loop or inside function, it is valid but it can create in consistency in our code.
+---------------------------------------
+Q. How will useEffect behave if we dont add dependecny array
+    - If we dont add dependency array then the useEffect will run on everytime when the component re-renders
+    - however if we add dependency array then the useEffect will only run when the dependecny array changes or updates
+    - If we add empty dependecny array then it will execute the useEffect only when the component renders at first
+
+    useEffect(() => {
+    }, []);
+
+    # if no dependency array => useEffect is called on every render.
+    # if dependency array is empty = [] => useEffect is called on initial render(just once).
+    # if dependency array has some dependency [dependency] => called everytime the dependency updates or changes.
+---------------------------------------
+Q. What is SPA?
+    - SPA Stands for Single Page application    
+    - A Single Page Application (SPA) is a type of web application that loads a single HTML page and dynamically updates the content as the user interacts with it, without needing to reload the entire page. SPAs provide a smoother and more responsive user experience by leveraging client-side rendering and AJAX to fetch and display data from the server. Examples include Gmail, Facebook, and Twitter.  
+---------------------------------------
+Q. What is difference between Client Side Routing and Server Side Routing
+    ### There are two types of Routing we can have in our web application
+        - Client Side Routing   
+        - Server Side Routing
+
+    ### Client-Side Routing (CSR):
+    - Routing Logic: Handled entirely by JavaScript running in the user's web browser.
+    - Initial Page Load: Typically, the browser loads a single HTML file along with JavaScript bundles. JavaScript code then manages navigation and renders different views within the application without full page reloads.
+    - User Experience: Navigations are smooth and instantaneous, providing a more app-like experience with fast transitions between views.
+    - Pros: Fast and responsive navigation, ideal for single-page applications (SPAs), reduced server load.
+    - Cons: Potential SEO challenges, slower initial load times due to downloading JavaScript bundles, accessibility concerns.
+
+    ### Server-Side Routing (SSR):
+    - Routing Logic: Managed by the server, often through the web server's configuration or a server-side framework.
+    - Initial Page Load: When a user requests a URL, the server responds with a fully rendered HTML page containing the requested content. Subsequent navigation triggers new requests to the server for each page.
+    - User Experience: Navigations might involve full page reloads, resulting in slightly slower transitions between views compared to CSR.
+    - Pros: Better SEO as content is readily available in the initial HTML response, faster initial load times since the server sends fully rendered pages.
+    - Cons: Slower subsequent page loads, less dynamic user experience, potential server load issues.

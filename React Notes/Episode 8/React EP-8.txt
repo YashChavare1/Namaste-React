@@ -1,0 +1,67 @@
+functional Component is a function which returns a function
+
+a class based compoent is a class which extends React.Component and it has a render method which return jsx 
+
+class UserClass extends React.Component {
+    // ways to access props
+    constructor(props) {
+        super(props);   // why do we write super(props)
+        this.state = {
+            count: 0,
+            total: 100
+        };
+    }
+
+    componentDidMount() {
+        // we make api call here, because we dont have to wait for the API to respond and then we render our compoent. Here we can make api call after the component has rendered. 
+        console.log("Parent ComponentDidMount");
+    }
+
+    render() {
+        const { name } = this.props;
+        const { number, total } = this.state;
+        return(
+            <div>
+                <h1>{name}</h1>  // accessing props
+                <h1 
+                    onClick={
+                        this.setState({
+                            number = this.state.count + 1;
+                        }); // Updating the State variable in class based Component
+                    }
+                >{number}</h1>
+                <h1>{total}</h1>
+            </div>
+        );
+    }
+}
+export default UserClass;
+
+
+when react see <UserClass />, it start loading and the new instance of class is created and when the class is instancated the constructor of the class is called. once the constructor is called then the "render" gets called.
+
+Lifecycle 
+    -constructor
+    -render
+    -componentDidMount
+    -componentDidUpdate - if there are change in setState update or api call in the ComponentDidMount when makees the compoent re-render.
+    -componentWillUnmount - It is called just before the compoent is unmounting 
+
+If a parent compoent have multiple child compoent
+- first parent constructor will be executed
+- then the parent render is executed
+
+    - then the child constructor is executed
+    - then the child render is executed
+    - same for other childs of parent
+    - then the componentDidMount of all childs
+- componentDidMount of parent
+
+
+##  - The componentDidMount of all method is done last because it is an expensive operation and also takes time.
+    - but the render method is fast and cost efficient.
+    - So, react will firtly execute the constructor and render of all child and then execute the componentDidMount of all child component.
+
+## setInterval and setTimeout
+    - these both does not end after the compoent is changes, because our react is single page appln 
+    - so we have to kill the setInterval and setTimeout for the optimization.

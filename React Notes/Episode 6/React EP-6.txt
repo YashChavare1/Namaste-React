@@ -1,0 +1,90 @@
+    - Whenever there is an specific change or a single change in the component, react will re-render the whole component
+    - useEffect requires two arguments first one is callback function and second one is the dependencies Array
+--------------------------------------------------
+Q. When does the use effect get executed?
+    - firstly page gets render 
+    - after the render cycle is completed then the use effect will be executed.
+--------------------------------------------------
+Q. Why we get cors error?
+    - when our browser block us to call from one orign to different origin, then we get a cors error.
+    - CORS (Cross-Origin Resource Sharing) errors occur when a web application running in one domain tries to make requests to a different domain (origin) via JavaScript, and the browser blocks those requests due to security restrictions.
+--------------------------------------------------
+# fetch()
+- the fetch will return a promise
+- to resolve that promise we can use ".then" or "async/await"
+- using async and await we can use .json() to convert the data into json format
+--------------------------------------------------
+# What is conditional Renderting?
+    rendering on the basis is called as conditional rendering
+
+    if(apiData.length === 0) {  // This is condition 
+        <Shimmer />             // Render on the basis of condition
+    }
+--------------------------------------------------
+Q. const [btn, setBtn] = useState("Login");    // if the useState is constant then how we can change the value of it ?
+    - When we make change in the use state the component gets re-render
+    - And while re-rendering the btn will be assign the new value. 
+    - While re-rendering it will find the diff between the old and new.
+    - And only the btn value will be changed.
+    - so, other elements are not updated/re-rendered only the element which includes the btn will be re-rendered. this is because of reconcilition algorithm.
+    - Whenever state variable updates, react triggers a reconcilition cycle(re-renders the component).
+
+--------------------------------------------------
+    -virtual dom is an object representation of the jsx
+--------------------------------------------------
+    - if in an component there is a input text with multiple other elements 
+    - the input box has onChange event which updates the useState variable's value
+    - when the state value is changed the whole component gets re-rendered but only the input element will get updated, because that element is only updated, This is how react effeciently make DOM Manipulation
+
+--------------------------------------------------
+
+Q. What is a Microservice?
+    Microservice architecture is a way of building software where the application is divided into smaller, independent services that communicate with each other through APIs. Each service focuses on a specific task, making development, deployment, and scaling easier. It offers benefits like flexibility, scalability, and resilience, but it also adds complexity in management and coordination.
+--------------------------------------------------
+Q. What is Monolith architecture?
+    Monolithic architecture is a traditional approach where the entire application is built as a single, tightly integrated unit. All components are interconnected within a single codebase, making development and deployment straightforward but limiting flexibility and scalability as the application grows.
+--------------------------------------------------
+Q. What is difference betweeen Monolith & Microservice?
+    - Monolithic architecture: Entire application is built as a single unit, tightly integrated.
+    - Microservice architecture: Application is divided into smaller, independent services, each focused on a specific task.
+    - Monolithic deployments are single units; microservices can be deployed independently.
+    - Scaling monoliths can be challenging; microservices allow for independent scaling.
+    - Monoliths have limited flexibility; microservices offer greater flexibility in development and technology choices.
+    - Monoliths are more susceptible to system-wide failures; microservices are designed for resilience, where failure in one service doesn't necessarily affect others.
+--------------------------------------------------
+Q. Why do we need useEffect Hook?
+    We need the `useEffect` hook in React to handle side effects in function components. Side effects can include things like data fetching, subscriptions, or manipulating the DOM. `useEffect` allows us to perform these side effects in a way that mimics the lifecycle methods of class components, such as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`. It helps to keep our components clean, organized, and efficient by separating concerns and avoiding common pitfalls like infinite loops or memory leaks.
+--------------------------------------------------
+Q. What is optional chaining.
+    optional chaining in JavaScript is like a safety net when you're trying to access properties of an object that might not exist. It's like asking, "If this part of the object is missing, can you just skip it and move on?" If the part you're trying to access is there, great! If not, instead of crashing your code, optional chaining just returns `undefined`. It's a handy way to make your code more resilient to missing data.
+--------------------------------------------------
+Q. What is Shimmer UI?
+    Shimmer UI, also known as skeleton loading or skeleton screens, is a user interface technique used to provide users with feedback about ongoing content loading in an application. Instead of leaving a blank space while waiting for data to load, a shimmer effect creates a placeholder that mimics the appearance of the content being loaded.
+
+    Shimmer UIs are commonly used in web and mobile applications to enhance user experience by reducing perceived loading times and preventing users from feeling like they're waiting for content to appear. They give users visual feedback that the application is responsive and actively loading data.
+--------------------------------------------------
+Q. what is difference between JS expression and js statement
+    Expression: Produces a value. It can be part of a statement or stand alone.
+    Example: 2 + 3, x = 5, Math.max(10, 20)
+    
+    Statement: Performs an action. It does not produce a value.
+    Example: let x;, if (x > 5) { /* do something */ } else { /* do something else */ }, function greet(name) { /* code */ }
+--------------------------------------------------
+Q. What is Conditional Rendering?
+    - Conditional rendering in React means showing different parts of a component's UI based on certain conditions. Here's a simple example:
+
+    {isLoggedIn ? (
+    <h1>Welcome back!</h1>
+    ) : (
+    <button onClick={() => setIsLoggedIn(true)}>Log in</button>
+    )}
+
+    In this code, if `isLoggedIn` is true, it shows a welcome message. Otherwise, it shows a login button.
+--------------------------------------------------
+Q. What is CORS?
+    CORS (Cross-Origin Resource Sharing) is a browser security feature that controls which web applications can access resources from different origins. It prevents unauthorized access to resources hosted on other domains, helping to maintain the security of web applications.
+--------------------------------------------------
+Q. What is async and await?
+    async: This keyword is used to declare that a function will be asynchronous. It means that the function will operate asynchronously, potentially allowing other code to run while it's waiting for some operation to complete, like fetching data from a server or reading a file from disk.
+    
+    await: This keyword is used within an async function to pause its execution until a promise is resolved, that is, until the asynchronous operation initiated by the promise completes. It's used to wait for the result of an asynchronous operation without blocking the execution of the entire program.

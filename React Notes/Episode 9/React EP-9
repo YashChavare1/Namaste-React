@@ -1,0 +1,12 @@
+Optimizing the Application
+
+ 1. code splitting
+ 2. dynamic bundling 
+ 3. chunking
+ 4. Lazy Loading
+ 5. On demand loading
+All above things are same
+
+
+we can do code splitting of diffent features like makeMyTrip have flight, trains, hotels and flight, trains and hotels can have 100s of component 
+- so we can make different bundle for flights, trains, and hotels so the size of js bundle file can be reduced and optimized

@@ -1,0 +1,5 @@
+Higher Order Component:
+    - Higher order component is a function which takes a component and returns a component.
+    - Basically its an normal JS function.
+    - Takes existing component makes changes or make it better and returns it back.
+    

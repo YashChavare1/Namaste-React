@@ -15,7 +15,10 @@ const RestaurantCard = (props) => {
     } = resData?.info.sla;
 
     return (
-        <div className="m-4 w-[270px] h-[350px] bg-gray-100 rounded-lg p-0 hover:bg-gray-200">
+        <div
+            className="m-4 w-[270px] h-[350px] bg-gray-100 rounded-lg p-0 hover:bg-gray-200"
+            data-testid="restaurantCard"
+        >
             <img
                 className="rounded-t-lg w-full h-1/2"
                 src={RES_LOGO + cloudinaryImageId}
